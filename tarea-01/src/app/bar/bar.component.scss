@@ -1,0 +1,17 @@
+$color-primario: #f0a35d;
+$color-segundario: #fafccb;
+
+.bar {
+  display: grid;
+  background-color: $color-primario;
+  height: 4rem;
+  border: 1px solid black;
+
+  h1 {
+    display: grid;
+    text-align: center;
+    padding: 5px 0 5px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+}

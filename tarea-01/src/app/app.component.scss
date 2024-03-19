@@ -1,56 +1,24 @@
 $color_primario: #f0a35d;
-$color_segundario: #fafccb;
+$color-segundario: #fafccb;
 
 .box {
   display: grid;
-  grid-template-columns: 150px 1fr;
   grid-template-areas:
-    "sidebar toolbar "
-    "sidebar content "
-    "sidebar content ";
+    "bar bar"
+    "toolbar content"
+    "toolbar content";
+  grid-template-columns: repeat(minmax(200px, 1fr) 1fr);
 
 }
 
 .bar {
-  display: grid;
-  background-color: $color_primario;
-  grid-area: toolbar;
-  height: 4rem;
-  border: 1px solid black;
-
-  h1 {
-    text-align: center;
-    padding: 5px 0 5px 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
-
+  grid-area: bar;
 }
 
 .toolbar {
-  display: grid;
-  background-color: $color_primario;
-  grid-area: sidebar;
-  text-align: center;
-  place-content: center;
-  border: 1px solid black;
-
-  .btn.btn-outline-primary {
-    margin-bottom: 50px;
-    width: 8rem;
-    height: 3rem;
-  }
+  grid-area: toolbar;
 }
 
-
-.content {
-  display: grid;
-  background-color: $color_segundario;
-  grid-area: content;
-  border: 1px solid black;
-
-  .text {
-    margin: 50px;
-    padding: 50px;
-    text-align: center;
-  }
+.contenido {
+  grid-area: contenido;
 }

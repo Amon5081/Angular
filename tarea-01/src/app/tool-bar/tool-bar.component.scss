@@ -1,0 +1,17 @@
+$color_primario: #f0a35d;
+$color-segundario: #fafccb;
+
+.toolbar {
+  display: grid;
+  background-color: $color-primario;
+  text-align: center;
+  place-content: center;
+  border: 1px solid black;
+  height: 100vh;
+
+  .btn.btn-outline-primary {
+    margin-bottom: 50px;
+    width: 8rem;
+    height: 3rem;
+  }
+}

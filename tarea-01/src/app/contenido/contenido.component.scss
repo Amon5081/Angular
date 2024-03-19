@@ -1,0 +1,15 @@
+$color-primario: #f0a35d;
+$color-segundario: #fafccb;
+
+.content {
+  display: grid;
+  background-color: $color-segundario;
+  border: 1px solid black;
+  height: 100vh;
+
+  .text {
+    margin: 50px;
+    padding: 50px;
+    text-align: center;
+  }
+}
