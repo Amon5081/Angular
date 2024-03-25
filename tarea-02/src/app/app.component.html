@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="">
+<div class="estudiantes">
+  <h1>Lista de estudiantes</h1>
+  <input type="text" placeholder="Nombre" [(ngModel)]="nuevoNombre">
+  <input type="number" placeholder="Edad" [(ngModel)]="nuevaEdad">
+  <button class="boton-agregar" (click)="agregarEstudiante()">Agregar</button>
+  <p class="animate__animated animate__flash" *ngIf="mensajeError">{{ mensajeError }}</p>
+
+  <ul>
+    <li *ngFor="let estudiante of estudiantes; let i = index" class="animate__animated animate__fadeInLeft">
+      {{ estudiante.nombre }} - {{ estudiante.edad }}
+      <button class="boton-eliminar" (click)="eliminarAlumno(i)">X</button>
+    </li>
+  </ul>
+</div>
