@@ -1,0 +1,16 @@
+<form class="col-6" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h1>Ingrese sus datos para registrarse</h1>
+  <div>
+    <label for="email">Correo electronico</label>
+    <input formControlName="correo" type="email" class="form-control"
+      [ngClass]="emailControl?.valid ? 'is-valid' : 'is-invalid'" placeholder="Ingrese su correo">
+  </div>
+
+  <div>
+    <label for="password">Contraseña</label>
+    <input formControlName="contraseña" type="password" class="form-control"
+      [ngClass]="passwordControl?.valid ? 'is-valid' : 'is-invalid'" placeholder="Ingrese su contraseña">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Registrarse</button>
+</form>
