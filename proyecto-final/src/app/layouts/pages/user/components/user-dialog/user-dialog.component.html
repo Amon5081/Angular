@@ -1,0 +1,41 @@
+<h2 mat-dialog-title class="text-center m-4">Registre al nuevo usuario</h2>
+
+<form [formGroup]="userForm">
+  <div mat-dialog-content class="row">
+
+    <mat-form-field class="col-6" appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input formControlName="Nombre" matInput>
+    </mat-form-field>
+
+
+    <mat-form-field class="col-6" appearance="fill">
+      <mat-label>Apellido</mat-label>
+      <input formControlName="Apellido" matInput>
+    </mat-form-field>
+
+
+    <mat-form-field class="col-6 w-100" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input formControlName="Email" matInput placeholder="Ingrese un email valido">
+      <mat-error *ngIf="userForm.get('Email')?.hasError('email')">
+        El email no es valido
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field class="col-6 w-100" appearance="fill">
+      <mat-label>Nota</mat-label>
+      <mat-select formControlName="nota">
+        <mat-option value="aprobado">Aprobado</mat-option>
+        <mat-option value="reprobado">Reprobado</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+</form>
+<div mat-dialog-actions class="justify-content-end">
+
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button (click)="guardar()">Guardar</button>
+</div>

@@ -1,0 +1,30 @@
+<!--sidenav-->
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="over">
+    <mat-list class="botones">
+      <a>
+        <mat-list>inicio</mat-list>
+      </a>
+      <a>
+        <mat-list>usuarios</mat-list>
+      </a>
+      <a>
+        <mat-list>clases</mat-list>
+      </a>
+    </mat-list>
+  </mat-drawer>
+
+
+  <!--toolbar-->
+  <div class="example-sidenav-content">
+    <mat-toolbar class="example-toolbar">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Administrador de alumnos</span>
+    </mat-toolbar>
+    <app-user></app-user>
+  </div>
+
+</mat-drawer-container>
