@@ -12,10 +12,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { DirectivaCustonDirective } from './directiva-personalizada/directiva-custon.directive';
+import { PipeCustomPipe } from './pipe-personalizado/pipe-custom.pipe';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    DirectivaCustonDirective, PipeCustomPipe
+  ],
   imports: [
     CommonModule,
     SharedRoutingModule,
@@ -35,6 +39,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatSelectModule,
+    DirectivaCustonDirective,
+    PipeCustomPipe,
   ]
 })
 export class SharedModule { }

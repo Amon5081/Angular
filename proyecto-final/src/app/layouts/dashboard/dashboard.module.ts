@@ -15,7 +15,7 @@ import { UserModule } from '../pages/user/user.module';
     CommonModule,
     DashboardRoutingModule,
     SharedModule,
-    UserModule
+    UserModule,
 
   ],
   exports: [

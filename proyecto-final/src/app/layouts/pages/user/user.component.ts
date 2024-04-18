@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 import { IUser } from './models';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
-import { UserDialogModule } from './components/user-dialog/user-dialog.module';
-import { Validators } from '@angular/forms';
-
 
 @Component({
   selector: 'app-user',
@@ -13,7 +10,7 @@ import { Validators } from '@angular/forms';
 })
 export class UserComponent {
 
-  displayedColumns: string[] = ["id", 'Nombre', 'Apellido', 'Email', 'nota', "acciones", "edit"];
+  displayedColumns: string[] = ["id", 'Nombre', 'Email', 'nota', "acciones", "edit"];
 
   users: IUser[] = [
     {
@@ -36,9 +33,17 @@ export class UserComponent {
   constructor(private MatDialog: MatDialog) { }
 
   openDialog(editingUser?: IUser): void {
-    this.MatDialog.open(UserDialogComponent).afterClosed().subscribe({
+    this.MatDialog.open(UserDialogComponent, { data: editingUser }).afterClosed().subscribe({
       next: (result) => {
-        this.users = [...this.users, result]
+        if (result) {
+          if (editingUser) {
+            this.users = this.users.map((user) => user.id === editingUser.id ? { ...user, ...result } : user)
+
+          } else {
+
+            this.users = [...this.users, result]
+          }
+        }
       },
     })
 
