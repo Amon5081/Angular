@@ -1,0 +1,9 @@
+<div class="pokemon" *ngIf="pokemon$ | async as pokemon">
+  <img src="{{ pokemon.sprites.front_default }}" alt="">
+  <h1>{{ pokemon.name }}</h1>
+  <p>altura: {{ pokemon.height }}</p>
+  <p>peso : {{ pokemon.weight }}</p>
+  <p>tipo(s): {{ pokemon.types }}</p>
+  <button (click)="LoadRandomPokemon()">Obten un pokemon aleatorio</button>
+
+</div>
