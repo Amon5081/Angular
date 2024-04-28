@@ -1,17 +1,18 @@
 <!--sidenav-->
 
-<mat-drawer-container class="example-container" autosize>
+<mat-drawer-container class="example-container " autosize>
   <mat-drawer #drawer class="example-sidenav" mode="over">
-    <mat-list class="botones">
-      <a>
-        <mat-list>inicio</mat-list>
-      </a>
-      <a>
-        <mat-list>usuarios</mat-list>
-      </a>
-      <a>
-        <mat-list>clases</mat-list>
-      </a>
+    <mat-list class="d-flex flex-column ">
+      <button class="m-2" mat-raised-button>
+        <a class="text-decoration-none text-dark" routerLink="auth">
+          <mat-list>inicio</mat-list>
+        </a>
+      </button>
+      <button class="m-2" mat-raised-button>
+        <a class="text-decoration-none text-dark" routerLink="user">
+          <mat-list>usuarios</mat-list>
+        </a>
+      </button>
     </mat-list>
   </mat-drawer>
 
@@ -24,7 +25,8 @@
       </button>
       <span>Administrador de alumnos</span>
     </mat-toolbar>
-    <app-user></app-user>
+
+    <router-outlet />
   </div>
 
 </mat-drawer-container>

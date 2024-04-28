@@ -12,7 +12,7 @@ import { UserDialogModule } from './components/user-dialog/user-dialog.module';
     CommonModule,
     UserRoutingModule,
     SharedModule,
-    UserDialogModule,
+    UserDialogModule
   ],
   exports: [
     UserComponent

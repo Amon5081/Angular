@@ -1,8 +1,6 @@
-<button mat-button class="m-2 " (click)="openDialog()">agregar</button>
+<h1>Listado de alumnos</h1>
 
-
-<table mat-table [dataSource]="users" class="mat-elevation-z8">
-
+<table mat-table [dataSource]="users" class="animate__animated animate__fadeInLeft mat-elevation-z8">
 
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef></th>
@@ -41,5 +39,7 @@
 
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr class="animate__animated animate__fadeIn" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<button mat-raised-button (click)="openDialog()" class="boton ">Agregar</button>

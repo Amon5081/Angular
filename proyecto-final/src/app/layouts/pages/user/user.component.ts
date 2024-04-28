@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IUser } from './models';
+import { IUser } from './models/alumnos';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
+import { AlumnosService } from '../../../core/service/alumnos.service';
 
 @Component({
   selector: 'app-user',
@@ -13,24 +14,24 @@ export class UserComponent {
   displayedColumns: string[] = ["id", 'Nombre', 'Email', 'nota', "acciones", "edit"];
 
   users: IUser[] = [
-    {
-      id: "1",
-      Nombre: 'andres',
-      Apellido: 'gutierres',
-      Email: 'andres@test.com',
-      nota: "aprobado",
-    },
-    {
-      id: "2",
-      Nombre: 'andrea',
-      Apellido: 'chacoz',
-      Email: 'andrea@test.com',
-      nota: "reprobado",
-    },
   ]
 
 
-  constructor(private MatDialog: MatDialog) { }
+  constructor(private MatDialog: MatDialog, private AlumnosService: AlumnosService) { }
+
+  ngOnInit(): void {
+    this.AlumnosService.getAlumno().subscribe((alumnos: any[]) => {
+      this.users = alumnos.map((alumno) => ({
+        id: alumno.id.toString(),
+        Nombre: alumno.Nombre,
+        Apellido: alumno.Apellido,
+        Email: alumno.Email,
+        nota: alumno.nota,
+      }));
+    });
+  }
+
+
 
   openDialog(editingUser?: IUser): void {
     this.MatDialog.open(UserDialogComponent, { data: editingUser }).afterClosed().subscribe({

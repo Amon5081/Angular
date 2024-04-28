@@ -1,11 +1,13 @@
 .example-container {
   width: 100%;
   height: 100vh;
-  background-color: #ffffff;
+  background-color: #202b38;
+  color: #ffffff;
+
 }
 
 .example-toolbar {
-  background-color: #f60002;
+  background-color: #202b38;
   color: #ffffff;
 }
 
@@ -16,12 +18,5 @@
 
 .example-sidenav-content {
   height: 100%;
-
-}
-
-.botones {
-  a {
-    font-size: large;
-  }
 
 }
