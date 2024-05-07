@@ -1,0 +1,26 @@
+<form class="container" [formGroup]="Formtest">
+  <h1 class="text-center">Login del sistema</h1>
+
+  <div class="group">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput placeholder="Ingrese un email valido">
+      <mat-error *ngIf="Formtest.get('email')?.hasError('email')">
+        El email no es valido
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Contraseña</mat-label>
+      <input formControlName="password" matInput placeholder="Ingrese su contraseña" type="password">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="login()" type="submit">Ingresar</button>
+    <button mat-raised-button (click)="register()" color="warn" type="button">Registrar</button>
+  </div>
+  <div *ngIf="message" class="success-message">
+    {{ message }}
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+</form>
