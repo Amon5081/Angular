@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { admin } from './model';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { LoginService } from '../../core/service/login.service';
+
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -12,54 +14,68 @@ import { Router } from '@angular/router';
 export class AuthComponent {
 
   authForm: FormGroup;
-
-  admin: admin = {
-    email: '',
-    password: ''
-  }
-
-
-
-
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  message: string = '';
+  errorMessage: string = '';
+  token: string = '';
+  constructor(private formBuilder: FormBuilder, private LoginService: LoginService, private http: HttpClient, private router: Router) {
 
     this.authForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]]
-    })
-  }
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
 
-  ingreso() {
-    const adminData = localStorage.getItem('admin');
-    if (adminData) {
-      const admin = JSON.parse(adminData);
-      if (this.authForm.get('email')?.value === admin.email && this.authForm.get('password')?.value === admin.password) {
-        this.router.navigate(['dashboard/user']);
-      } else {
-        alert('Email o contraseña incorrectos');
-      }
-    } else {
-      alert('Email o contraseña incorrectos');
-    }
   }
 
   registrar() {
     if (this.authForm.valid) {
-      this.admin = {
+      const user = {
         email: this.authForm.get('email')?.value,
         password: this.authForm.get('password')?.value
       };
-      localStorage.setItem('admin', JSON.stringify(this.admin));
-      console.log(this.admin);
-      this.authForm.reset();
+
+      this.LoginService.RegisterUser(user).subscribe(
+        response => {
+          this.message = 'Usuario registrado con éxito.';
+          this.authForm.reset();
+          setTimeout(() => {
+            this.message = '';
+          }, 3000);
+        },
+        error => {
+          this.errorMessage = 'Error al registrar usuario.';
+          setTimeout(() => {
+            this.errorMessage = '';
+          }, 3000);
+        }
+      );
+    } else {
+      this.errorMessage = 'Por favor, asegúrese de rellenar todos los campos correctamente.';
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 3000);
     }
   }
 
-  ngOnInit() {
-    const adminData = localStorage.getItem('admin');
-    if (adminData) {
-      this.admin = JSON.parse(adminData);
+
+  ingreso() {
+    if (this.authForm.valid) {
+      const user = {
+        email: this.authForm.get('email')?.value,
+        password: this.authForm.get('password')?.value
+      };
+      this.LoginService.loginUser(user.email, user.password).subscribe(
+        response => {
+          this.errorMessage = 'Acceso permitido';
+          this.router.navigate(['/dashboard/user']);
+        },
+      );
+    } else {
+      this.errorMessage = 'Credenciales incorrectas';
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 3000);
     }
+
   }
 
 }

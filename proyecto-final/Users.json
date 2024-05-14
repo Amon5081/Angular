@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": "8009",
+      "email": "abrahan@acom",
+      "password": "123456"
+    },
+    {
+      "id": "d1f2",
+      "email": "abrahan@acom",
+      "password": "123456"
+    },
+    {
+      "id": "61d5",
+      "email": "abrahan@acom",
+      "password": "123456"
+    },
+    {
+      "id": "627c",
+      "email": "a@acom",
+      "password": "123456"
+    },
+    {
+      "id": "d7f7",
+      "email": "a@a.com",
+      "password": "123456"
+    }
+  ]
+}

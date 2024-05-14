@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { DirectivaCustonDirective } from './directiva-personalizada/directiva-custon.directive';
 import { PipeCustomPipe } from './pipe-personalizado/pipe-custom.pipe';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { PipeCustomPipe } from './pipe-personalizado/pipe-custom.pipe';
     MatSelectModule,
     DirectivaCustonDirective,
     PipeCustomPipe,
+    HttpClientModule,
   ]
 })
 export class SharedModule { }

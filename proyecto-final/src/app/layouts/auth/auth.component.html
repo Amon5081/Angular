@@ -1,4 +1,5 @@
 <h1 class="text-center">Ingresar al sistema</h1>
+
 <form class="container d-flex justify-content-center" [formGroup]="authForm">
 
   <div class="d-flex flex-column w-25 p-3 bg-light shadow border ">
@@ -15,5 +16,8 @@
     </mat-form-field>
     <button mat-raised-button (click)="ingreso()" class="m-2" color="primary" type="submit">Ingresar</button>
     <button mat-raised-button class="m-2" color="warn" type="button" (click)="registrar()">Registrar</button>
+
+    <p class="text-center text-success">{{message}}</p>
+    <p class="text-center text-danger">{{errorMessage}}</p>
   </div>
 </form>
