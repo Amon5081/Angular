@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { DirectivaCustonDirective } from './directiva-personalizada/directiva-custon.directive';
 import { PipeCustomPipe } from './pipe-personalizado/pipe-custom.pipe';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     DirectivaCustonDirective,
     PipeCustomPipe,
     HttpClientModule,
+    StoreDevtoolsModule,
   ]
 })
 export class SharedModule { }
