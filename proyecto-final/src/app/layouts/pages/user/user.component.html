@@ -9,7 +9,7 @@
 
   <ng-container matColumnDef="Nombre">
     <th mat-header-cell *matHeaderCellDef> Nombre y apellido </th>
-    <td mat-cell *matCellDef="let element"> {{element.Nombre | pipeCustom : element.Apellido }}</td>
+    <td mat-cell *matCellDef="let element"> {{element.Nombre}} {{element.Apellido}} </td>
   </ng-container>
 
 

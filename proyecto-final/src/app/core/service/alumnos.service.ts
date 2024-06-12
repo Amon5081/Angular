@@ -1,36 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { IUser } from '../../layouts/pages/user/models/alumnos';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlumnosService {
+  private apiUrl = 'http://localhost:3000';
 
-  private alumnos: IUser[] = [
+  constructor(private http: HttpClient) { }
 
-    {
-      id: '1',
-      Nombre: 'Rodrigo',
-      Apellido: 'Guzman',
-      Email: 'a@b.com',
-      nota: 'aprobado',
-    },
-
-    {
-      id: '2',
-      Nombre: 'antonio',
-      Apellido: 'Gerardo',
-      Email: 'a@b.com',
-      nota: 'aprobado',
-    },
-  ]
-
-
-  getAlumno(): Observable<IUser[]> {
-    return of(this.alumnos)
+  getListaAlumnos(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/students`);
   }
 
+  addAlumno(alumno: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/students`, alumno);
+  }
 
-  constructor() { }
+  editAlumno(alumno: any): Observable<any> {
+    const id = alumno.id;
+    const editedAlumno = {
+      Nombre: alumno.Nombre,
+      Apellido: alumno.Apellido,
+      Email: alumno.Email,
+      nota: alumno.nota
+    };
+    return this.http.put<any>(`${this.apiUrl}/students/${id}`, editedAlumno);
+  }
+
+  deleteAlumno(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/students/${id}`);
+  }
 }

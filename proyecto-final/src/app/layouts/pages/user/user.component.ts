@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { IUser } from './models/alumnos';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
 import { AlumnosService } from '../../../core/service/alumnos.service';
@@ -7,54 +6,41 @@ import { AlumnosService } from '../../../core/service/alumnos.service';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrl: './user.component.scss'
+  styleUrls: ['./user.component.scss']
 })
 export class UserComponent {
 
   displayedColumns: string[] = ["id", 'Nombre', 'Email', 'nota', "acciones", "edit"];
-
-  users: IUser[] = [
-  ]
-
+  users: any[] = [];
 
   constructor(private MatDialog: MatDialog, private AlumnosService: AlumnosService) { }
 
   ngOnInit(): void {
-    this.AlumnosService.getAlumno().subscribe((alumnos: any[]) => {
-      this.users = alumnos.map((alumno) => ({
-        id: alumno.id.toString(),
-        Nombre: alumno.Nombre,
-        Apellido: alumno.Apellido,
-        Email: alumno.Email,
-        nota: alumno.nota,
-      }));
+    this.AlumnosService.getListaAlumnos().subscribe((alumnos: any[]) => {
+      this.users = alumnos;
     });
   }
 
-
-
-  openDialog(editingUser?: IUser): void {
-    this.MatDialog.open(UserDialogComponent, { data: editingUser }).afterClosed().subscribe({
-      next: (result) => {
-        if (result) {
-          if (editingUser) {
-            this.users = this.users.map((user) => user.id === editingUser.id ? { ...user, ...result } : user)
-
-          } else {
-
-            this.users = [...this.users, result]
-          }
+  openDialog(editingUser?: any): void {
+    const dialogRef = this.MatDialog.open(UserDialogComponent, { data: editingUser });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        if (editingUser) {
+          const index = this.users.findIndex((user) => user.id === editingUser.id);
+          this.users[index] = result;
+        } else {
+          this.users.push(result);
         }
-      },
-    })
-
+        // Actualiza la lista de alumnos
+        this.users = [...this.users];
+      }
+    });
   }
+
   deleteUser(id: string) {
-    this.users = this.users.filter((user) => user.id != id)
+    this.AlumnosService.deleteAlumno(id).subscribe(() => {
+      this.users = this.users.filter((user) => user.id !== id);
+    });
   }
 
 }
-
-
-
-
