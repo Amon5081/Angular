@@ -23,7 +23,8 @@ export class UserDialogComponent {
       Nombre: [editingUser ? editingUser.Nombre : '', Validators.required],
       Apellido: [editingUser ? editingUser.Apellido : '', Validators.required],
       Email: [editingUser ? editingUser.Email : '', Validators.required],
-      nota: [editingUser ? editingUser.nota : '', Validators.required]
+      inscripcion: [editingUser ? editingUser.inscripcion : '', Validators.required],
+      notas: [editingUser ? editingUser.notas : ''],
     });
   }
 
@@ -37,9 +38,8 @@ export class UserDialogComponent {
   }
 
   private agregar(user: any): void {
-    // Generate a unique random ID in string format
     const randomId = Math.random().toString(36).substr(2, 9);
-    user.id = randomId; // Assign the random ID to the user object
+    user.id = randomId;
 
     this.alumnosService.addAlumno(user).subscribe({
       next: (res) => {
@@ -47,7 +47,6 @@ export class UserDialogComponent {
       },
       error: (error) => {
         console.error('Error al agregar usuario:', error);
-        // Mostrar un mensaje de error al usuario
       }
     });
   }
@@ -61,7 +60,6 @@ export class UserDialogComponent {
         },
         error: (error) => {
           console.error('Error al editar usuario:', error);
-          // Mostrar un mensaje de error al usuario
         }
       });
     } else {

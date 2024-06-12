@@ -24,7 +24,8 @@ export class AlumnosService {
       Nombre: alumno.Nombre,
       Apellido: alumno.Apellido,
       Email: alumno.Email,
-      nota: alumno.nota
+      inscripcion: alumno.inscripcion,
+      notas: alumno.notas
     };
     return this.http.put<any>(`${this.apiUrl}/students/${id}`, editedAlumno);
   }

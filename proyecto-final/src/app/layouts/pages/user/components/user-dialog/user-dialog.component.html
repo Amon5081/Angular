@@ -25,12 +25,26 @@
 
 
     <mat-form-field class="col-6 w-100" appearance="fill">
-      <mat-label>Nota</mat-label>
-      <mat-select formControlName="nota">
+      <mat-label>Inscripciones</mat-label>
+      <mat-select formControlName="inscripcion">
+        <mat-option value="angular">angular</mat-option>
+        <mat-option value="react">react</mat-option>
+        <mat-option value="vue">vue</mat-option>
+        <mat-option value="svelte">svelte</mat-option>
+        <mat-option value="next">next</mat-option>
+        <mat-option value="nuxt">nuxt</mat-option>
+        <mat-option value="sveltekit">sveltekit</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="col-6 w-100" appearance="fill">
+      <mat-label>notas</mat-label>
+      <mat-select formControlName="notas">
         <mat-option value="aprobado">Aprobado</mat-option>
         <mat-option value="reprobado">Reprobado</mat-option>
       </mat-select>
     </mat-form-field>
+
   </div>
 
 </form>

@@ -1,12 +1,37 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": "a34b",
+      "email": "abrahan@a",
+      "password": "123456"
+    },
+    {
+      "id": "5ba2",
+      "email": "abrahan@a.com",
+      "password": "123456"
+    },
+    {
+      "id": "a778",
+      "email": "a@acom",
+      "password": "123456"
+    }
+  ],
   "students": [
     {
-      "Nombre": "aa",
-      "Apellido": "aaaaa",
-      "Email": "a@a",
-      "nota": "aprobado",
-      "id": "kiq6dp4hg"
+      "Nombre": "aaaa",
+      "Apellido": "a@aaa",
+      "Email": "a@aaaa",
+      "inscripcion": "angular",
+      "notas": "aprobado",
+      "id": "d2jsg4zmr"
+    },
+    {
+      "id": "k9y4dd2i9",
+      "Nombre": "a",
+      "Apellido": "a",
+      "Email": "@a",
+      "inscripcion": "angular",
+      "notas": "aprobado"
     }
   ]
 }

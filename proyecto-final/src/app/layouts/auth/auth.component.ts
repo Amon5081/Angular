@@ -6,6 +6,7 @@ import { registerUser, loginUser } from '../../store/auth.ngrx/auth.actions';
 import { RootState } from '../../store/auth.ngrx/index';
 import { selectAuthenticated } from '../../store/auth.ngrx/auth.selector';
 import { selectErrorMessage } from '../../store/auth.ngrx/auth.selector';
+import { LoginService } from '../../core/service/login.service';
 
 @Component({
   selector: 'app-auth',
@@ -20,7 +21,7 @@ export class AuthComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private store: Store<RootState>
+    private store: Store<RootState>,
   ) {
     this.authForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],

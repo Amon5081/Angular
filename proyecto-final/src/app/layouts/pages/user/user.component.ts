@@ -10,7 +10,7 @@ import { AlumnosService } from '../../../core/service/alumnos.service';
 })
 export class UserComponent {
 
-  displayedColumns: string[] = ["id", 'Nombre', 'Email', 'nota', "acciones", "edit"];
+  displayedColumns: string[] = ["id", 'Nombre', 'Email', 'inscripcion', "notas", "acciones", "edit"];
   users: any[] = [];
 
   constructor(private MatDialog: MatDialog, private AlumnosService: AlumnosService) { }
@@ -31,7 +31,6 @@ export class UserComponent {
         } else {
           this.users.push(result);
         }
-        // Actualiza la lista de alumnos
         this.users = [...this.users];
       }
     });
